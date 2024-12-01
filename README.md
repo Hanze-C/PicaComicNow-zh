@@ -15,7 +15,7 @@ Deploy With Vercel
 
 如果您的网络环境无法连接至PicACG官方网站，请根据以下步骤部署反代
 
-1.将Worker部署到CLoudflare
+### 1.将Worker部署到CLoudflare
 
 *由于worker.dev被DNS污染，请为Worker绑定自己的域名
 
@@ -25,7 +25,7 @@ Deploy With Vercel
     </a>
   </p>
 
-2. Fork本仓库后更改api/utils
+### 2.Fork本仓库后更改api/utils
 
 api/utils.ts (Line 38-47)
 ---
