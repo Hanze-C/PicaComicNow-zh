@@ -39,9 +39,9 @@ export function replaceFileUrl(obj: Record<string, any>) {
     if (typeof val === 'string') {
       if (val.startsWith('https://')) {
         obj[key] = val
-          .replace('storage1.picacomic.com', 'proxy.your-domain.com/proxy/https://s3.picacomic.com')
-          .replace('storage-b.picacomic.com', 'proxy.your-domain.com/proxy/https://s3.picacomic.com')
-          .replace('img.picacomic.com', 'proxy.your-domain.com/proxy/https://s3.picacomic.com')
+          .replace('storage1.picacomic.com', 'https://s3.picacomic.com')
+          .replace('storage-b.picacomic.com', 'https://s3.picacomic.com')
+          .replace('img.picacomic.com', 'https://s3.picacomic.com')
           .replace('www.picacomic.com', 'pica-pica.wikawika.xyz')
       }
     }
