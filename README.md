@@ -2,13 +2,43 @@
 
 <div align="center">
 
-Deploy your own
+Deploy With Veercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FFreeNowOrg%2FPicaComicNow&demo-title=PicACG%20Web%20App&demo-url=https%3A%2F%2Fpica-comic.vercel.app)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FHanze-C%2FPicaComicNow&demo-title=PicACG%20Web%20App&demo-url=https%3A%2F%2Fpica-comic-now-zh.vercel.app)
 
-想用的话点上面的按钮自己部署一个，一直点下一步就行了。别让我的被封了，我还要看本子呢，谢谢。
+本项目支持Vercel一键部署
+部署前请根据以下文档更换部分链接
 
 </div>
+
+## CloudFlare Worker 反向代理
+
+如果您的网络环境无法连接至PicACG官方网站，请根据以下步骤部署反代
+1.将Worker部署到CLoudflare
+*由于worker.dev被DNS污染，请为Worker绑定自己的域名
+
+  <p>
+    <a href="https://deploy.workers.cloudflare.com/?url=https://github.com/Hanze-C/Proxy-CF">
+      <img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare Workers"/>
+    </a>
+  </p>
+
+2. 更改api/utils
+
+api/utils.ts (Line 38-47)
+---
+    // String
+    if (typeof val === 'string') {
+      if (val.startsWith('https://')) {
+        obj[key] = val
+          .replace('storage1.picacomic.com', 'proxy.your-domain.com/proxy/s3.picacomic.com')
+          .replace('storage-b.picacomic.com', 'proxy.your-domain.com/proxy/s3.picacomic.com')
+          .replace('img.picacomic.com', 'proxy.your-domain.com/proxy/s3.picacomic.com')
+          .replace('www.picacomic.com', 'pica-pica.wikawika.xyz')
+      }
+    }
+---
+将proxy.your-domain.com替换为你的域名
 
 ## Attention please
 
